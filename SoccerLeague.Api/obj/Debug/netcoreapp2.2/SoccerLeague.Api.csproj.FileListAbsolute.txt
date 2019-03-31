@@ -1,0 +1,17 @@
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.csprojAssemblyReference.cache
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.csproj.CoreCompileInputs.cache
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.RazorAssemblyInfo.cache
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.RazorAssemblyInfo.cs
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.AssemblyInfoInputs.cache
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.AssemblyInfo.cs
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/bin/Debug/netcoreapp2.2/SoccerLeague.Api.deps.json
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/bin/Debug/netcoreapp2.2/SoccerLeague.Api.runtimeconfig.json
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/bin/Debug/netcoreapp2.2/SoccerLeague.Api.runtimeconfig.dev.json
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/bin/Debug/netcoreapp2.2/SoccerLeague.Api.dll
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/bin/Debug/netcoreapp2.2/SoccerLeague.Api.pdb
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/bin/Debug/netcoreapp2.2/SoccerLeague.DataAccess.dll
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/bin/Debug/netcoreapp2.2/SoccerLeague.DataAccess.pdb
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.RazorTargetAssemblyInfo.cache
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.csproj.CopyComplete
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.dll
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.Api/obj/Debug/netcoreapp2.2/SoccerLeague.Api.pdb

@@ -1,0 +1,9 @@
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.DataAccess/bin/Debug/netcoreapp2.2/SoccerLeague.DataAccess.deps.json
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.DataAccess/bin/Debug/netcoreapp2.2/SoccerLeague.DataAccess.dll
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.DataAccess/bin/Debug/netcoreapp2.2/SoccerLeague.DataAccess.pdb
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.DataAccess/obj/Debug/netcoreapp2.2/SoccerLeague.DataAccess.csprojAssemblyReference.cache
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.DataAccess/obj/Debug/netcoreapp2.2/SoccerLeague.DataAccess.csproj.CoreCompileInputs.cache
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.DataAccess/obj/Debug/netcoreapp2.2/SoccerLeague.DataAccess.AssemblyInfoInputs.cache
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.DataAccess/obj/Debug/netcoreapp2.2/SoccerLeague.DataAccess.AssemblyInfo.cs
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.DataAccess/obj/Debug/netcoreapp2.2/SoccerLeague.DataAccess.dll
+/Users/brandonjones/Apps/c#/soccerleague.api/SoccerLeague.DataAccess/obj/Debug/netcoreapp2.2/SoccerLeague.DataAccess.pdb

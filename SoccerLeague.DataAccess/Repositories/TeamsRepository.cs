@@ -2,50 +2,66 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using MongoDB.Driver;
 using SoccerLeague.DataAccess.Models;
 
 namespace SoccerLeague.DataAccess.Repositories
 {
-    public class TeamsRepository
+    public class TeamsRepository : ITeamRepository
     {
-        private readonly TeamContext _context;
+        private readonly ITeamContext _context;
 
-        public TeamsRepository(TeamContext context)
+        public TeamsRepository(ITeamContext context)
         {
             _context = context;
         }
 
-        public async Task<List<TeamModel>> GetTeamsAsync()
+        public async Task<IEnumerable<TeamModel>> GetAllTeams()
         {
-            return await _context.Teams.ToListAsync();
+            return await _context
+                            .Teams
+                            .Find(_ => true)
+                            .ToListAsync();
         }
 
-        public async Task<TeamModel> GetTeamAsync(int id)
+        public Task<TeamModel> GetTeam(string name)
         {
-            return await _context.Teams.FindAsync(id);
+            FilterDefinition<TeamModel> filter = Builders<TeamModel>.Filter.Eq(m => m.Name, name);
+
+            return _context
+                    .Teams
+                    .Find(filter)
+                    .FirstOrDefaultAsync();
         }
 
-        public async Task<int> AddTeamAsync(TeamModel team)
+        public async Task Create(TeamModel team)
         {
-            int rowsAffected = 0;
-
-            _context.Teams.Add(team);
-            rowsAffected = await _context.SaveChangesAsync();
-
-            return rowsAffected;
+            await _context.Teams.InsertOneAsync(team);
         }
 
-        public async Task<int> DeleteTeamAsync(int id)
+        public async Task<bool> Update(TeamModel team)
         {
+            ReplaceOneResult updateResult =
+                await _context
+                        .Teams
+                        .ReplaceOneAsync(
+                            filter: g => g.Id == team.Id,
+                            replacement: team);
 
-            var deleteTeam = await _context.Teams.FindAsync(id);
+            return updateResult.IsAcknowledged
+                    && updateResult.ModifiedCount > 0;
+        }
 
-            int rowsAffected = 0;
+        public async Task<bool> Delete(string name)
+        {
+            FilterDefinition<TeamModel> filter = Builders<TeamModel>.Filter.Eq(m => m.Name, name);
 
-            _context.Teams.Remove(deleteTeam);
-            rowsAffected = await _context.SaveChangesAsync();
+            DeleteResult deleteResult = await _context
+                                                .Teams
+                                                .DeleteOneAsync(filter);
 
-            return rowsAffected;
+            return deleteResult.IsAcknowledged
+                && deleteResult.DeletedCount > 0;
         }
     }
 }

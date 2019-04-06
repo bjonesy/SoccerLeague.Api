@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using SoccerLeague.DataAccess;
+using SoccerLeague.DataAccess.Models;
 using SoccerLeague.DataAccess.Repositories;
 
 namespace SoccerLeague.Api
@@ -27,12 +29,21 @@ namespace SoccerLeague.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<TeamsRepository>();
-
-            services.AddDbContext<TeamContext>(opt =>
-                opt.UseInMemoryDatabase("TeamInventory"));
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.Configure<SettingsModel>(
+                options =>
+                {
+                    options.ConnectionString =
+                        Configuration.GetSection("MongoDb:ConnectionString").Value;
+                    options.Database = Configuration.GetSection("MongoDb:Database").Value;
+                });
+
+            services.AddSingleton<IMongoClient, MongoClient>(
+                _ => new MongoClient(Configuration.GetSection("MongoDb:ConnectionString").Value));
+
+            services.AddTransient<ITeamContext, TeamContext>();
+            services.AddTransient<ITeamRepository, TeamsRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

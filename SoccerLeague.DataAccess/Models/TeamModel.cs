@@ -1,8 +1,12 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 namespace SoccerLeague.DataAccess.Models
 {
     public class TeamModel
     {
-        public int Id { get; set; }
+        [BsonId]
+        public ObjectId Id { get; set; }
 
         public string Name { get; set; }
 

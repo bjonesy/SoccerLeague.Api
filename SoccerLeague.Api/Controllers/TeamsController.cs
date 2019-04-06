@@ -13,58 +13,68 @@ namespace SoccerLeague.Api.Controllers
     [ApiController]
     public class TeamsController : ControllerBase
     {
-        private readonly TeamsRepository _repository;
+        private readonly ITeamRepository _repository;
 
-        public TeamsController(TeamsRepository repository)
+        public TeamsController(ITeamRepository repository)
         {
             _repository = repository;
         }
 
-        [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<TeamModel>> GetByIdAsync(int id)
-        {
-            var team = await _repository.GetTeamAsync(id);
-
-            #region snippet_ProblemDetailsStatusCode
-            if (team == null)
-            {
-                return NotFound();
-            }
-            #endregion
-
-            return team;
-        }
-
+        // GET: api/Game
         [HttpGet]
-        public async Task<ActionResult<List<TeamModel>>> GetAsync()
+        public async Task<IActionResult> Get()
         {
-            List<TeamModel> teams = null;
-
-            teams = await _repository.GetTeamsAsync();
-
-            return teams;
+            return new ObjectResult(await _repository.GetAllTeams());
         }
 
+        // GET: api/Game/name
+        [HttpGet("{name}", Name = "Get")]
+        public async Task<IActionResult> Get(string name)
+        {
+            var team = await _repository.GetTeam(name);
+
+            if (team == null)
+                return new NotFoundResult();
+
+            return new ObjectResult(team);
+        }
+
+        // POST: api/Game
         [HttpPost]
-        [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<TeamModel>> CreateAsync(TeamModel team)
+        public async Task<IActionResult> Post([FromBody]TeamModel team)
         {
-            await _repository.AddTeamAsync(team);
-
-            return CreatedAtAction(nameof(GetByIdAsync),
-                new { id = team.Id }, team);
+            await _repository.Create(team);
+            return new OkObjectResult(team);
         }
 
-        [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> DeleteAsync(int id)
+        // PUT: api/Game/5
+        [HttpPut("{name}")]
+        public async Task<IActionResult> Put(string name, [FromBody]TeamModel team)
         {
-            await _repository.DeleteTeamAsync(id);
+            var teamFromDb = await _repository.GetTeam(name);
 
-            return StatusCode(200);
+            if (teamFromDb == null)
+                return new NotFoundResult();
+
+            team.Id = teamFromDb.Id;
+
+            await _repository.Update(team);
+
+            return new OkObjectResult(team);
+        }
+
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{name}")]
+        public async Task<IActionResult> Delete(string name)
+        {
+            var gameFromDb = await _repository.GetTeam(name);
+
+            if (gameFromDb == null)
+                return new NotFoundResult();
+
+            await _repository.Delete(name);
+
+            return new OkResult();
         }
     }
 }
